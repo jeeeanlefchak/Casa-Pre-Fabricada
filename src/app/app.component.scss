@@ -1,0 +1,23 @@
+#componentePrincipal{
+    mat-toolbar{
+        background: #283e4a;
+        .keyboard_arrow_down{
+            width: 100%;
+            text-align: end;
+            mat-icon{
+                color: white;
+            }
+        }
+    }
+    .menuSettings{
+        .iconMenu{
+
+        }
+    }
+    .menuPage{
+
+    }
+    .iconeMenu{
+        color: white;
+    }
+}
