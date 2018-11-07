@@ -3,29 +3,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes, Router, NavigationStart, NavigationError } from '@angular/router';
 import { LoginPage } from './pages/login/login';
 import { AuthLayoutComponent } from './pages/auth/auth-layout.component';
+import { AdministrativoPage } from './pages/administrativo/administrativo';
 
-// const routes: Routes = [
-
-// { path: '', component: HomePage },
-// { path: 'login', component: LoginPage},
-// { path: 'empresa', component : EmpresaPage },
-// { path: 'funcionario', component : FuncionarioPage}
-
-// ];
-
-// @NgModule({
-//   exports: [RouterModule],
-//   imports: [RouterModule.forRoot(routes)],
-// })
-// export class AppRoutingModule { 
-// }
 export const baseRoutes: Routes = [
   {
       path: '',
       component: AuthLayoutComponent,
       children: [
           { path: 'home', component: HomePage },
-          { path: 'login', component: LoginPage}
+          { path: 'login', component: LoginPage },
+          { path: 'administrativo', component: AdministrativoPage }
           
       ]
   },

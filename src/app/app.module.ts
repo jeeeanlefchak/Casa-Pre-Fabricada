@@ -13,13 +13,15 @@ import { HttpModule } from '@angular/http';
 import { NgxChartsModule } from "@swimlane/ngx-charts";
 import { BaseRoute } from './app-routing.module';
 import { AuthLayoutComponent } from './pages/auth/auth-layout.component';
+import { AdministrativoPage } from './pages/administrativo/administrativo';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePage,
     LoginPage,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    AdministrativoPage
   ],
   imports: [
     BrowserModule,
