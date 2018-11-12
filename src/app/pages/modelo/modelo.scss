@@ -1,10 +1,17 @@
 #modelo{
-    .imagensimagens{
-        .card-imagem {
-            width: 125px !important;
-            height: 125px !important;
+    .imagem{
+            display: flex;
+            .card-imagem {
+                width: 125px !important;
+                height: 125px !important;
+            }
+        .active{
+            outline: auto;
+            // background: #7CFC8F;
         }
-
+        .naoActive{
+            opacity: 0.4;
+        }
     }
     .labelImagem {
         display: flex;
@@ -16,5 +23,13 @@
         margin-left: 25%;
         margin-right: 25%;
         padding-bottom: 29%;
+    }
+    .btns{
+        position: static;
+        text-align: end;
+        padding-right: 2%;
+        .salvar{
+            background-color: darkgray;
+        }
     }
 }

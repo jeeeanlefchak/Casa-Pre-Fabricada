@@ -1,16 +1,30 @@
 <div id="modelo">
-    <!-- <input [attr.hidden]="true" id="imagem" multiple name="imagem" accept="image/*" type="file" (change)="alterarImagem($event)"
-        /> -->
-    <div>
-        <mat-card class="imagemPrincipal">
 
+    <div>
+        <mat-card class="imagemPrincipal" [ngStyle]="imgSelecionada">
+            <!-- <label for="imagem" class="labelImagem">
+                <mat-icon aria-hidden="true" class="icon-imagem"></mat-icon>
+            </label> -->
         </mat-card>
     </div>
-    <div class="imagens">
-        <mat-card class="card-imagem" [ngStyle]="imagemStyle">
-            <label for="imagem" class="labelImagem">
-                <!-- <mat-icon aria-hidden="true" class="icon-imagem">add_to_photos</mat-icon> -->
-            </label>
+    <div class="imagem">
+        <mat-card *ngFor="let img of modelo" class="card-imagem" [ngStyle]="img" [ngClass]="{'active': imgSelecionada == img, 'naoActive' : imgSelecionada != img  }"
+            (click)="imagemSelecionada(img)">
         </mat-card>
+    </div>
+    <div class="btns">
+        <button mat-icon-button>
+            <label for="imagemEditar" class="labelImagem">
+                <mat-icon>edit</mat-icon>
+            </label>
+        </button>
+        <button mat-icon-button>
+            <label for="imagem" class="labelImagem">
+                <mat-icon aria-hidden="true" class="icon-imagem">add</mat-icon>
+            </label>
+        </button>
+        <input [attr.hidden]="true" id="imagem" multiple name="imagem" accept="image/*" type="file" (change)="adicionarNovaImagem($event)" />
+        <input [attr.hidden]="true" id="imagemEditar" multiple name="imagemEditar" accept="image/*" type="file" (change)="editar($event)" />
+        <button mat-flat-button class="salvar" (click)="salvar()">Salvar</button>
     </div>
 </div>
