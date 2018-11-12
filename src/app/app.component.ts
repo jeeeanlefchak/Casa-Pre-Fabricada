@@ -14,8 +14,8 @@ export class AppComponent implements OnInit {
 
 
 
-  ngOnInit() {
+  public ngOnInit() {
   }
 
-  
+
 }

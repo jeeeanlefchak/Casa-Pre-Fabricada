@@ -14,6 +14,7 @@ import { NgxChartsModule } from "@swimlane/ngx-charts";
 import { BaseRoute } from './app-routing.module';
 import { AuthLayoutComponent } from './pages/auth/auth-layout.component';
 import { AdministrativoPage } from './pages/administrativo/administrativo';
+import { ModeloPage } from './pages/modelo/modelo';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AdministrativoPage } from './pages/administrativo/administrativo';
     HomePage,
     LoginPage,
     AuthLayoutComponent,
-    AdministrativoPage
+    AdministrativoPage,
+    ModeloPage
   ],
   imports: [
     BrowserModule,

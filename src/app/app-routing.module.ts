@@ -4,6 +4,7 @@ import { RouterModule, Routes, Router, NavigationStart, NavigationError } from '
 import { LoginPage } from './pages/login/login';
 import { AuthLayoutComponent } from './pages/auth/auth-layout.component';
 import { AdministrativoPage } from './pages/administrativo/administrativo';
+import { ModeloPage } from './pages/modelo/modelo';
 
 export const baseRoutes: Routes = [
   {
@@ -12,17 +13,17 @@ export const baseRoutes: Routes = [
       children: [
           { path: 'home', component: HomePage },
           { path: 'login', component: LoginPage },
-          { path: 'administrativo', component: AdministrativoPage }
+          { path: 'administrativo', component: AdministrativoPage },
+          { path: 'modelo', component:ModeloPage }
           
       ]
   },
   {
       path: '',
       component: AuthLayoutComponent,
-      children: [{
-          path: 'login',
-          component: LoginPage
-      }]
+      children: [
+          {path: 'login',component: LoginPage}
+        ]
   }
 ];
 
