@@ -10,7 +10,7 @@ import { Modelo } from '../../models/modelo';
 })
 export class ModeloPage implements OnInit {
     public listaModelo: Modelo[] = [];
-    public imgSelecionada: any;
+    public imgSelecionada: Modelo = new Modelo();;
     public buscando: Boolean = false;
     constructor(public modeloService: ModeloService) {
         this.buscarListaModelos();
@@ -19,9 +19,15 @@ export class ModeloPage implements OnInit {
     ngOnInit() {
     }
 
-    public imagemSelecionada(modelo) {
-        console.log(modelo)
-        this.imgSelecionada = modelo.imagem;
+    public imagemSelecionada(modelo: Modelo) {
+        this.imgSelecionada = new Modelo();
+        let x = typeof modelo.imagem;
+        if (x == 'string') {
+            debugger
+            modelo.imagem = JSON.parse(modelo.imagem);
+        }
+        // modelo.imagem  = JSON.parse(JSON.stringify(modelo.imagem));
+        this.imgSelecionada = modelo;
     }
 
     public adicionarNovaImagem(event) {
@@ -30,11 +36,12 @@ export class ModeloPage implements OnInit {
             this.toBase64(fileList[0], (base64) => {
                 let modelo = new Modelo();
                 modelo.imagem = { 'background-image': 'url(' + base64 + ')', 'background-size': 'cover', 'background-position': '50%' };
-                this.listaModelo.push(modelo);
-                console.log(this.imagemSelecionada)
                 if (!this.imgSelecionada) {
-                    this.imgSelecionada = this.listaModelo[0];
+                    this.imagemSelecionada(this.listaModelo[0]);
                 }
+                setTimeout(() => {
+                    this.salvar(modelo);
+                }, 200);
             });
         }
     }
@@ -45,16 +52,20 @@ export class ModeloPage implements OnInit {
             this.toBase64(fileList[0], (base64) => {
                 let modelo = new Modelo();
                 modelo.imagem = { 'background-image': 'url(' + base64 + ')', 'background-size': 'cover', 'background-position': '50%' };
+
                 for (let i = 0;i < this.listaModelo.length;i++) {
                     if (this.imgSelecionada == this.listaModelo[i]) {
-                        this.listaModelo[i] = modelo;
-                        this.imgSelecionada = modelo;
-                        break
+                        let imagemParaDeletar = new Modelo();
+                        imagemParaDeletar = { ...this.imgSelecionada };
+                        this.excluir(imagemParaDeletar, i);
+                        this.salvar(modelo);
+                        break;
                     }
                 }
             });
         }
     }
+
     public toBase64(file, retorno) {
         var reader = new FileReader();
         reader.readAsDataURL(file);
@@ -63,33 +74,19 @@ export class ModeloPage implements OnInit {
         };
     }
 
-    public salvar() {
-        let modelos: Modelo[] = [];
-        let modelo = new Modelo();
-        var listaModelos: Modelo[] = [];
-
-        for (let i = 0;i < this.listaModelo.length;i++) {
-            modelo = new Modelo();
-            modelo.imagem = JSON.stringify(this.listaModelo[i].imagem);
-            debugger
-            if (this.listaModelo[i].posicao == null) {
-                modelo.posicao = i;
-            }
-            this.modeloService.save(modelo).subscribe(res => {
+    public salvar(modelo: Modelo) {
+        modelo.imagem = JSON.stringify(modelo.imagem);
+        this.buscando = true;
+        this.modeloService.save(modelo).subscribe((res: Modelo) => {
+            if (!res.deletado) {
                 console.log(res);
-                listaModelos.push(res);
-            }, err => {
-                return;
-            })
-            // modelos.push(modelo);
-
-        }
-        this.listaModelo = [];
-        this.listaModelo = listaModelos;
-        // console.log(modelos);
-        // this.modeloService.salvarLista(modelos).subscribe(res => {
-        //     console.log(res)
-        // })
+                res.imagem = JSON.parse(res.imagem);
+                this.listaModelo.push(res);
+            }
+            this.buscando = false;
+        }, err => {
+            this.buscando = false;
+        })
     }
 
     public buscarListaModelos() {
@@ -103,11 +100,29 @@ export class ModeloPage implements OnInit {
                 this.listaModelo.push(x);
             }
             setTimeout(() => {
-
                 this.buscando = false;
             }, 500);
         }, err => {
             this.buscando = false;
         })
+    }
+
+    public excluir(m: Modelo, index) {
+        let modelo = { ...m };
+        if (index == undefined) {
+            index = this.verificaIndex(modelo);
+        }
+        modelo.deletado = true;
+        modelo.imagem = JSON.stringify(modelo.imagem);
+        this.salvar(modelo);
+        this.listaModelo.splice(index, 1);
+    }
+
+    public verificaIndex(modelo: Modelo) {
+        for (let i = 0;i < this.listaModelo.length;i++) {
+            if (modelo.imagem == this.listaModelo[i].imagem) {
+                return i;
+            }
+        }
     }
 }

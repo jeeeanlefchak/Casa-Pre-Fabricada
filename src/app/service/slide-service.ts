@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { AbstractService } from './abstract-service';
 import { Slide } from '../models/slide';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class SlideService extends AbstractService<Slide> {
@@ -16,9 +17,9 @@ export class SlideService extends AbstractService<Slide> {
         return 'slide';
     }
 
-    // public salvarLista(lista): Observable<any> {
-    //     return this.http.post(this.urlWebBase + '/salvarlista', lista).map(res => {
-    //         return res.json();
-    //     })
-    // }
+    public buscarSlides(): Observable<Slide[]> {
+        return this.http.get(this.urlWebBase + '/buscarslides').map(res=>{
+            return res.json();
+        })
+    }
 }

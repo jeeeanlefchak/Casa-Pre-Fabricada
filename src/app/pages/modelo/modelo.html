@@ -1,30 +1,38 @@
 <div id="modelo">
 
     <div>
-        <mat-card class="imagemPrincipal" [ngStyle]="imgSelecionada">
+        <mat-card class="imagemPrincipal" [ngStyle]="imgSelecionada.imagem">
             <!-- <label for="imagem" class="labelImagem">
                 <mat-icon aria-hidden="true" class="icon-imagem"></mat-icon>
             </label> -->
         </mat-card>
     </div>
-    <div class="imagem" *ngIf="!buscando">
-        <mat-card *ngFor="let modelo of listaModelo" class="card-imagem" [ngStyle]="modelo.imagem" [ngClass]="{'active': imgSelecionada == modelo.imagem, 'naoActive' : imgSelecionada != modelo.imagem  }"
-            (click)="imagemSelecionada(modelo)">
-        </mat-card>
-    </div> 
-    <div class="btns">
-        <button mat-icon-button>
-            <label for="imagemEditar" class="labelImagem">
+    <div class="imagem">
+            <mat-card *ngFor="let modelo of listaModelo" class="card-imagem" [ngStyle]="modelo.imagem" [ngClass]="{'active': imgSelecionada.imagem == modelo.imagem, 'naoActive' : imgSelecionada.imagem != modelo.imagem  }"
+                (click)="imagemSelecionada(modelo)">
+            </mat-card>
+    </div>
+    <div class="btns" *ngIf="!buscando">
+        <button mat-icon-button *ngIf="imgSelecionada.imagem">
+            <label for="imagemEditar" class="labelImagem" matTooltip="Editar" matTooltipPosition="above">
                 <mat-icon>edit</mat-icon>
             </label>
         </button>
-        <button mat-icon-button>
+        <button mat-icon-button matTooltip="Adicionar" matTooltipPosition="above">
             <label for="imagem" class="labelImagem">
                 <mat-icon aria-hidden="true" class="icon-imagem">add</mat-icon>
             </label>
         </button>
+        <button mat-icon-button>
+            <label class="labelImagem" matTooltip="Excluir" matTooltipPosition="above">
+                <mat-icon aria-hidden="true" class="icon-imagem" (click)="excluir(imgSelecionada, null)">remove</mat-icon>
+            </label>
+        </button>
         <input [attr.hidden]="true" id="imagem" multiple name="imagem" accept="image/*" type="file" (change)="adicionarNovaImagem($event)" />
-        <input [attr.hidden]="true" id="imagemEditar" multiple name="imagemEditar" accept="image/*" type="file" (change)="editar($event)" />
-        <button mat-flat-button class="salvar" (click)="salvar()">Salvar</button>
+        <input [attr.hidden]="true" id="imagemEditar" multiple name="imagemEditar" accept="image/*" type="file"
+            (change)="editar($event)" />
+        <!-- <button mat-flat-button class="salvar" (click)="salvar()">Salvar</button> -->
     </div>
+    <mat-spinner diameter="40" *ngIf="buscando">
+    </mat-spinner>
 </div>
