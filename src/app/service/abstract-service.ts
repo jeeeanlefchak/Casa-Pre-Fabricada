@@ -29,9 +29,9 @@ export abstract class AbstractService<T>{
 
 
    public save(obj: any): Observable<T> {
-      if (!obj.new) {
-         delete obj.new;
-      }
+    //   if (!obj.new) {
+    //      delete obj.new;
+    //   }
       console.log(obj);
       return this.http.post(this.urlWebBase + "/salvar", obj).map(res => {
          return res.json();

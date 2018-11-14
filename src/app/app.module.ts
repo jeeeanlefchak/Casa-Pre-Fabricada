@@ -15,6 +15,7 @@ import { BaseRoute } from './app-routing.module';
 import { AuthLayoutComponent } from './pages/auth/auth-layout.component';
 import { AdministrativoPage } from './pages/administrativo/administrativo';
 import { ModeloPage } from './pages/modelo/modelo';
+import { SlidePage } from './pages/slide/slide';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ModeloPage } from './pages/modelo/modelo';
     LoginPage,
     AuthLayoutComponent,
     AdministrativoPage,
-    ModeloPage
+    ModeloPage,
+    SlidePage
   ],
   imports: [
     BrowserModule,

@@ -17,8 +17,14 @@ export class ModeloService extends AbstractService<Modelo> {
         return 'modelo';
     }
 
-    public salvarLista(lista): Observable<any> {
+    public salvarLista(lista): Observable<Modelo> {
         return this.http.post(this.urlWebBase + '/salvarlista', lista).map(res => {
+            return res.json();
+        })
+    }
+
+    public buscarModelos(): Observable<Modelo[]>{
+        return this.http.get(this.urlWebBase + '/buscarmodelos').map(res=>{
             return res.json();
         })
     }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModeloService } from '../../service/modelo-service';
 import { Modelo } from '../../models/modelo';
+
 @Component({
     selector: 'modelo',
     templateUrl: './modelo.html',
@@ -8,18 +9,19 @@ import { Modelo } from '../../models/modelo';
     providers: [ModeloService]
 })
 export class ModeloPage implements OnInit {
-    public modelo: Modelo[] = [];
+    public listaModelo: Modelo[] = [];
     public imgSelecionada: any;
+    public buscando: Boolean = false;
     constructor(public modeloService: ModeloService) {
-
+        this.buscarListaModelos();
     }
 
     ngOnInit() {
     }
 
-    public imagemSelecionada(img) {
-        console.log(img)
-        this.imgSelecionada = img;
+    public imagemSelecionada(modelo) {
+        console.log(modelo)
+        this.imgSelecionada = modelo.imagem;
     }
 
     public adicionarNovaImagem(event) {
@@ -28,10 +30,10 @@ export class ModeloPage implements OnInit {
             this.toBase64(fileList[0], (base64) => {
                 let modelo = new Modelo();
                 modelo.imagem = { 'background-image': 'url(' + base64 + ')', 'background-size': 'cover', 'background-position': '50%' };
-                this.modelo.push(modelo.imagem);
+                this.listaModelo.push(modelo);
                 console.log(this.imagemSelecionada)
                 if (!this.imgSelecionada) {
-                    this.imgSelecionada = this.modelo[0];
+                    this.imgSelecionada = this.listaModelo[0];
                 }
             });
         }
@@ -43,10 +45,10 @@ export class ModeloPage implements OnInit {
             this.toBase64(fileList[0], (base64) => {
                 let modelo = new Modelo();
                 modelo.imagem = { 'background-image': 'url(' + base64 + ')', 'background-size': 'cover', 'background-position': '50%' };
-                for (let i = 0;i < this.modelo.length;i++) {
-                    if (this.imgSelecionada == this.modelo[i]) {
-                        this.modelo[i] = modelo.imagem;
-                        this.imgSelecionada = modelo.imagem;
+                for (let i = 0;i < this.listaModelo.length;i++) {
+                    if (this.imgSelecionada == this.listaModelo[i]) {
+                        this.listaModelo[i] = modelo;
+                        this.imgSelecionada = modelo;
                         break
                     }
                 }
@@ -64,18 +66,48 @@ export class ModeloPage implements OnInit {
     public salvar() {
         let modelos: Modelo[] = [];
         let modelo = new Modelo();
+        var listaModelos: Modelo[] = [];
 
-        for (let i = 0;i < this.modelo.length;i++) {
+        for (let i = 0;i < this.listaModelo.length;i++) {
             modelo = new Modelo();
-            modelo.imagem = JSON.stringify(this.modelo[i]);
-            if (this.modelo[i].posicao == null) {
+            modelo.imagem = JSON.stringify(this.listaModelo[i].imagem);
+            debugger
+            if (this.listaModelo[i].posicao == null) {
                 modelo.posicao = i;
             }
-            modelos.push(modelo);
+            this.modeloService.save(modelo).subscribe(res => {
+                console.log(res);
+                listaModelos.push(res);
+            }, err => {
+                return;
+            })
+            // modelos.push(modelo);
+
         }
-        console.log(modelos);
-        this.modeloService.salvarLista(modelos).subscribe(res => {
-            console.log(res)
+        this.listaModelo = [];
+        this.listaModelo = listaModelos;
+        // console.log(modelos);
+        // this.modeloService.salvarLista(modelos).subscribe(res => {
+        //     console.log(res)
+        // })
+    }
+
+    public buscarListaModelos() {
+        this.buscando = true;
+        this.modeloService.buscarModelos().subscribe((res: Modelo[]) => {
+            for (let x of res) {
+                if (x.imagem != undefined) {
+                    x.imagem = JSON.parse(x.imagem);
+                }
+                console.log(x);
+                this.listaModelo.push(x);
+            }
+            setTimeout(() => {
+
+                this.buscando = false;
+            }, 500);
+        }, err => {
+            this.buscando = false;
         })
     }
 }

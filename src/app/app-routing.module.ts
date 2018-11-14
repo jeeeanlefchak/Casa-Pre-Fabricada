@@ -5,6 +5,7 @@ import { LoginPage } from './pages/login/login';
 import { AuthLayoutComponent } from './pages/auth/auth-layout.component';
 import { AdministrativoPage } from './pages/administrativo/administrativo';
 import { ModeloPage } from './pages/modelo/modelo';
+import { SlidePage } from './pages/slide/slide';
 
 export const baseRoutes: Routes = [
   {
@@ -14,7 +15,8 @@ export const baseRoutes: Routes = [
           { path: 'home', component: HomePage },
           { path: 'login', component: LoginPage },
           { path: 'administrativo', component: AdministrativoPage },
-          { path: 'modelo', component:ModeloPage }
+          { path: 'modelo', component:ModeloPage },
+          { path: 'slide', component:SlidePage}
           
       ]
   },

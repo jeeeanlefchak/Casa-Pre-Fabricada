@@ -7,11 +7,11 @@
             </label> -->
         </mat-card>
     </div>
-    <div class="imagem" *ngIf="!buscando">
-        <mat-card *ngFor="let modelo of listaModelo" class="card-imagem" [ngStyle]="modelo.imagem" [ngClass]="{'active': imgSelecionada == modelo.imagem, 'naoActive' : imgSelecionada != modelo.imagem  }"
-            (click)="imagemSelecionada(modelo)">
+    <div class="imagem">
+        <mat-card *ngFor="let img of modelo" class="card-imagem" [ngStyle]="img" [ngClass]="{'active': imgSelecionada == img, 'naoActive' : imgSelecionada != img  }"
+            (click)="imagemSelecionada(img)">
         </mat-card>
-    </div> 
+    </div>
     <div class="btns">
         <button mat-icon-button>
             <label for="imagemEditar" class="labelImagem">
