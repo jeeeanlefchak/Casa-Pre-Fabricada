@@ -9,7 +9,7 @@ import { Slide } from '../../models/Slide';
     providers: [SlideService]
 })
 export class SlidePage implements OnInit {
-    
+
     public listaSlide: Slide[] = [];
     public imgSelecionada: Slide = new Slide();;
     public buscando: Boolean = false;
@@ -100,9 +100,8 @@ export class SlidePage implements OnInit {
                 console.log(x);
                 this.listaSlide.push(x);
             }
-            setTimeout(() => {
-                this.buscando = false;
-            }, 500);
+            this.buscando = false;
+            this.imagemSelecionada(this.listaSlide[0]);
         }, err => {
             this.buscando = false;
         })

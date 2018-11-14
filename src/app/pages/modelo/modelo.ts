@@ -52,7 +52,6 @@ export class ModeloPage implements OnInit {
             this.toBase64(fileList[0], (base64) => {
                 let modelo = new Modelo();
                 modelo.imagem = { 'background-image': 'url(' + base64 + ')', 'background-size': 'cover', 'background-position': '50%' };
-
                 for (let i = 0;i < this.listaModelo.length;i++) {
                     if (this.imgSelecionada == this.listaModelo[i]) {
                         let imagemParaDeletar = new Modelo();
@@ -99,9 +98,8 @@ export class ModeloPage implements OnInit {
                 console.log(x);
                 this.listaModelo.push(x);
             }
-            setTimeout(() => {
-                this.buscando = false;
-            }, 500);
+            this.buscando = false;
+            this.imagemSelecionada(this.listaModelo[0]);
         }, err => {
             this.buscando = false;
         })

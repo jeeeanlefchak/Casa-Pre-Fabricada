@@ -1,4 +1,4 @@
-<div id="modelo">
+<div id="slide">
 
         <div>
             <mat-card class="imagemPrincipal" [ngStyle]="imgSelecionada.imagem">
@@ -8,8 +8,8 @@
             </mat-card>
         </div>
         <div class="imagem">
-                <mat-card *ngFor="let modelo of listaModelo" class="card-imagem" [ngStyle]="modelo.imagem" [ngClass]="{'active': imgSelecionada.imagem == modelo.imagem, 'naoActive' : imgSelecionada.imagem != modelo.imagem  }"
-                    (click)="imagemSelecionada(modelo)">
+                <mat-card *ngFor="let slide of listaSlide" class="card-imagem" [ngStyle]="slide.imagem" [ngClass]="{'active': imgSelecionada.imagem == slide.imagem, 'naoActive' : imgSelecionada.imagem != slide.imagem  }"
+                    (click)="imagemSelecionada(slide)">
                 </mat-card>
         </div>
         <div class="btns" *ngIf="!buscando">
