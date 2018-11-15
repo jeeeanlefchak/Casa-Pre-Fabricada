@@ -11,7 +11,7 @@ import { Slide } from '../../models/Slide';
 export class SlidePage implements OnInit {
 
     public listaSlide: Slide[] = [];
-    public imgSelecionada: Slide = new Slide();;
+    public imgSelecionada: Slide = new Slide();
     public buscando: Boolean = false;
     constructor(public slideService: SlideService) {
         this.buscarListaSlides();

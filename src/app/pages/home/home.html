@@ -1,11 +1,8 @@
 <div id="home">
     <div class="slide">
-        <mat-card>
+        <mat-card [ngStyle]="imgSelecionada.imagem">
             <div class="bolas">
-                    <div class="bola"></div>
-                    <div class="bola bolaAtivo"></div>
-                    <div class="bola"></div>
-                    <div class="bola"></div>
+                <div *ngFor="let slide of listaSlide" [ngClass]="{'bolaAtivo':imgSelecionada.imagem == slide.imagem}" class="bola" (click)="mudaSlide(slide)"></div>
             </div>
         </mat-card>
     </div>
