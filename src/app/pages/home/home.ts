@@ -28,13 +28,13 @@ export class HomePage implements OnInit {
       if (slide == null || slide == undefined) {
         slide = this.listaSlide[this.indexSlide];
       }
-       if (this.indexSlide == this.listaSlide.length -1) {
-      this.indexSlide = 0;
-    } else {
-      this.indexSlide += 1;
-    }
-    this.imagemSelecionada(slide);
-    this.tempoMudarSlide();
+      if (this.indexSlide == this.listaSlide.length - 1) {
+        this.indexSlide = 0;
+      } else {
+        this.indexSlide += 1;
+      }
+      this.imagemSelecionada(slide);
+      this.tempoMudarSlide();
     }, 4000);
   }
 
