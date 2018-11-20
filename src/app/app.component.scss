@@ -8,6 +8,16 @@
                 color: white;
             }
         }
+        .server{
+            width: 100%;
+            text-align: end;
+            mat-icon{
+                color: red;
+            }
+            .statusServer{
+                color: green !important;
+            }
+        }
     }
     .menuSettings{
         .iconMenu{

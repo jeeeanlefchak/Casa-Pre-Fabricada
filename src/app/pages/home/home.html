@@ -1,8 +1,15 @@
 <div id="home">
     <div class="slide">
-        <mat-card [ngStyle]="imgSelecionada.imagem">
+        <mat-card (mouseenter)="btnNext = true" (mouseleave)="btnNext = false" [ngStyle]="imgSelecionada.imagem">
+            <button *ngIf="btnNext" class="btnNext rigth">
+                <mat-icon>chevron_right</mat-icon>
+            </button>
+            <button *ngIf="btnNext" class="btnNext left">
+                <mat-icon>chevron_left</mat-icon>
+            </button>
             <div class="bolas">
-                <div *ngFor="let slide of listaSlide" [ngClass]="{'bolaAtivo':imgSelecionada.imagem == slide.imagem}" class="bola" (click)="mudaSlide(slide)"></div>
+                <div *ngFor="let slide of listaSlide" [ngClass]="{'bolaAtivo':imgSelecionada.imagem == slide.imagem}"
+                    class="bola" (click)="mudaSlide(slide)"></div>
             </div>
         </mat-card>
     </div>

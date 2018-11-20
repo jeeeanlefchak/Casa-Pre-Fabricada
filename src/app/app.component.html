@@ -7,7 +7,11 @@
                     <mat-icon class="iconeMenu" matTooltip="Menu">menu</mat-icon>
                 </button>
             </div>
+            <div class="server">
+                <mat-icon matTooltip="Status Servidor" [ngClass]="{'statusServer': statusServer}">radio_button_unchecked</mat-icon>
+            </div>
             <div class="keyboard_arrow_down">
+
                 <button mat-icon-button [matMenuTriggerFor]="appMenu">
                     <mat-icon>keyboard_arrow_down</mat-icon>
                 </button>

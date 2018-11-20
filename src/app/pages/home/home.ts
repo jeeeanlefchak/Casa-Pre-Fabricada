@@ -35,7 +35,7 @@ export class HomePage implements OnInit {
       }
       this.imagemSelecionada(slide);
       this.tempoMudarSlide();
-    }, 4000);
+    }, 6000);
   }
 
   public imagemSelecionada(slide: Slide) {

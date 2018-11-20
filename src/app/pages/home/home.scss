@@ -26,6 +26,26 @@
                     border: 1px solid rgba(0,0,0,.4);
                 }
             }
+            .btnNext{
+                border-radius: 4px;
+                width: 64px;
+                height: 64px;
+                background-color: #fff;
+                border-width: 0;
+                opacity: 0.7;
+                position: absolute;
+                margin-top: -17%;
+                mat-icon{
+                    width: 100%;
+                    font-size: 365%;
+                }
+            }
+            .rigth{
+                right: -1%;
+            }
+            .left{
+                left: -1%;
+            }
        }
    }
 }
