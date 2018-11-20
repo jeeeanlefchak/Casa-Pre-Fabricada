@@ -15,6 +15,10 @@ export class UsuarioPage implements OnInit {
 
     }
 
+    ngOnInit(){ // esse metodo deve ter pois ele implementa do OnInit, esse metodo é executado sempre que a tua pagina carrega depos do constructor
+
+    }
+
     public salvar() {
         this.usuarioService.save(this.usuario).subscribe((res: Usuario) => { // esse save é um metodo abstrato todas as classes tem elez
             this.usuario = res; // res é o retorno do servidor, o que esta voltando do servidor depois de salvo
