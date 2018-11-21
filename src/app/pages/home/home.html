@@ -1,10 +1,15 @@
 <div id="home">
+    <div class="definicao">
+        <mat-card>
+            <span>Casa Sustentável Pré-Fabricada</span>
+        </mat-card>
+    </div>
     <div class="slide">
         <mat-card (mouseenter)="btnNext = true" (mouseleave)="btnNext = false" [ngStyle]="imgSelecionada.imagem">
-            <button *ngIf="btnNext" class="btnNext rigth">
+            <button *ngIf="btnNext" class="btnNext rigth" (click)="proximoSlide()">
                 <mat-icon>chevron_right</mat-icon>
             </button>
-            <button *ngIf="btnNext" class="btnNext left">
+            <button *ngIf="btnNext" class="btnNext left" (click)="voltarSlide()">
                 <mat-icon>chevron_left</mat-icon>
             </button>
             <div class="bolas">

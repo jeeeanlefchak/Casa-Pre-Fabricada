@@ -1,6 +1,7 @@
 #componentePrincipal{
     mat-toolbar{
-        background: #283e4a;
+        // background: #283e4a;
+        background-image: url(../assets/imagens/madeira.jpg);
         .keyboard_arrow_down{
             width: 100%;
             text-align: end;

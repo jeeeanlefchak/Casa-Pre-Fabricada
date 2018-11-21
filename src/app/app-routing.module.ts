@@ -12,11 +12,12 @@ export const baseRoutes: Routes = [
       path: '',
       component: AuthLayoutComponent,
       children: [
-          { path: 'home', component: HomePage },
-          { path: 'login', component: LoginPage },
-          { path: 'administrativo', component: AdministrativoPage },
-          { path: 'modelo', component:ModeloPage },
-          { path: 'slide', component:SlidePage}
+            { path: '', component: HomePage },
+            { path: 'home', component: HomePage },
+            { path: 'login', component: LoginPage },
+            { path: 'administrativo', component: AdministrativoPage },
+            { path: 'modelo', component:ModeloPage },
+            { path: 'slide', component:SlidePage}
           
       ]
   },
@@ -38,7 +39,7 @@ export const baseRoutes: Routes = [
 export class BaseRoute {
   constructor(router: Router) {
       router.events.subscribe((event) => {
-        router.navigate(['/home']);
+        router.navigate(['']);
         //   if (event instanceof NavigationStart) {
         //       const token = sessionStorage.getItem('idEmpresa');
         //       if (token == null && event.url !== '/login') {
