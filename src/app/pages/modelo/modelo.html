@@ -5,6 +5,7 @@
         <mat-form-field class="txtAreaDescricao">
             <textarea matInput placeholder="Descrição" [(ngModel)]="imgSelecionada.descricao"> </textarea>
         </mat-form-field>
+        <button class="btnDescricao" mat-button (click)="salvarDescricao(imgSelecionada)" *ngIf="!salvandoDescricao && imgSelecionada.descricao">Salvar Descrição</button>
     </div>
     <div class="imagem">
         <mat-card *ngFor="let modelo of listaModelo" class="card-imagem" [ngStyle]="modelo.imagem" [ngClass]="{'active': imgSelecionada.imagem == modelo.imagem, 'naoActive' : imgSelecionada.imagem != modelo.imagem  }"
