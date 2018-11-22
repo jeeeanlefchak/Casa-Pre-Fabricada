@@ -12,6 +12,8 @@ export class ModeloPage implements OnInit {
     public listaModelo: Modelo[] = [];
     public imgSelecionada: Modelo = new Modelo();;
     public buscando: Boolean = false;
+    public salvandoDescricao: Boolean = false;
+
     constructor(public modeloService: ModeloService) {
         this.buscarListaModelos();
     }
@@ -84,6 +86,25 @@ export class ModeloPage implements OnInit {
             this.buscando = false;
         }, err => {
             this.buscando = false;
+        })
+    }
+
+    public salvarDescricao(modelo: Modelo) {
+        this.salvandoDescricao = true;
+        let m = modelo;
+        m.imagem = JSON.stringify(m.imagem);
+        this.modeloService.save(m).subscribe((modelo: Modelo) => {
+            for (let i = 0;i < this.listaModelo.length;i++) {
+                if (this.listaModelo[i].id == modelo.id) {
+                    modelo.imagem = JSON.parse(modelo.imagem);
+                    this.listaModelo[i] = modelo;
+                    debugger
+                    break;
+                }
+            }
+            this.salvandoDescricao = false;
+        }, err => {
+            this.salvandoDescricao = false;
         })
     }
 

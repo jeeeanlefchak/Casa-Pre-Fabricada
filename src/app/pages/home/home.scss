@@ -1,7 +1,7 @@
 #home {
+    overflow-x: hidden !important;
    .slide{
-        overflow-x: hidden !important;
-        background-color: azure;
+        background-color: #ebebeb;
         mat-card{
             // position: absolute;
             width: 100%;
@@ -51,9 +51,17 @@
             }
        }
    }
+   .tituloModelos{
+    margin: 2% 0% 0% 0%;
+   }
    .modelos{
         display: flex;
         .modelo{
+            width: 200px;
+            margin: 0% 2% 2% 2%;
+            mat-card{
+                height: 190px;
+            }
         }
    }
 }
