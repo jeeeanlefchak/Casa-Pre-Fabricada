@@ -26,7 +26,10 @@ export class HomePage implements OnInit {
 
   public buscarModelos() {
     this.modeloService.buscarModelos().subscribe((lista: Modelo[]) => {
-      this.listaModelo = lista;
+      for (let x of lista) {
+        x.imagem = JSON.parse(x.imagem);
+        this.listaModelo.push(x);
+      }
     })
   }
 

@@ -1,7 +1,9 @@
 #home {
    .slide{
-       mat-card{
-            position: absolute;
+        overflow-x: hidden !important;
+        background-color: azure;
+        mat-card{
+            // position: absolute;
             width: 100%;
             padding-top: 31%;
             .bolas{
@@ -48,5 +50,10 @@
                 left: -1%;
             }
        }
+   }
+   .modelos{
+        display: flex;
+        .modelo{
+        }
    }
 }
