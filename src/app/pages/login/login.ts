@@ -7,12 +7,12 @@ import { Router } from '@angular/router';
   styleUrls: ['login.scss'],
   providers: []
 })
+
 export class LoginPage implements OnInit {
   // public empresa: Empresa = new Empresa();
   public loginSenhaErrado: string = null;
   public logado: boolean = false;
   constructor(public router: Router) {
-
   }
 
   ngOnInit() {

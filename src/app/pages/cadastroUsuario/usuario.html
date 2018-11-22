@@ -1,4 +1,4 @@
-<div id="LoginForm">
+<div *ngIf="!logado" id="LoginForm">
   <div class="container">
       <div class="login-form">
           <div class="main-div">
@@ -7,13 +7,16 @@
               </div>
               <form id="Login">
                   <div class="form-group">
-                      <input type="email"  [(ngModel)]="empresa.login" [ngModelOptions]="{standalone: true}" class="form-control" id="inputEmail" placeholder="NOME DE USUARIO OU E-MAIL">
+                      <input type="email"  [(ngModel)]="usuario.nome" [ngModelOptions]="{standalone: true}" class="form-control" id="inputEmail" placeholder="NOME DE USUARIO OU E-MAIL">
                   </div>
                   <div class="form-group">
-                      <input type="password"  [(ngModel)]="empresa.senha" [ngModelOptions]="{standalone: true}" class="form-control" id="inputPassword" placeholder="SENHA" (keyup.enter)="logar()">
+                    <input type="number"  [(ngModel)]="usuario.idade" [ngModelOptions]="{standalone: true}" class="form-control" id="inputIdade" placeholder="IDADE">
+                </div>
+                  <div class="form-group">
+                      <input type="password"  [(ngModel)]="usuario.senha" [ngModelOptions]="{standalone: true}" class="form-control" id="inputPassword" placeholder="SENHA" (keyup.enter)="logar()">
                   </div>
                   <span class="loginSenhaErrado">{{loginSenhaErrado}}</span>
-                  <button type="submit" class="btn btn-primary" (click)="logar()">Entrar</button>
+                  <button type="submit" class="btn btn-primary" (click)="salvar()" id="btnSubmit">Cadastrar</button>
               </form>
           </div>
       </div>

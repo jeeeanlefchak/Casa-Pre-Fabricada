@@ -6,18 +6,20 @@ import { AuthLayoutComponent } from './pages/auth/auth-layout.component';
 import { AdministrativoPage } from './pages/administrativo/administrativo';
 import { ModeloPage } from './pages/modelo/modelo';
 import { SlidePage } from './pages/slide/slide';
+import { UsuarioPage } from './pages/cadastroUsuario/usuario';
 
 export const baseRoutes: Routes = [
   {
       path: '',
       component: AuthLayoutComponent,
       children: [
+          { path: '', component: HomePage },
           { path: 'home', component: HomePage },
           { path: 'login', component: LoginPage },
           { path: 'administrativo', component: AdministrativoPage },
-          { path: 'modelo', component:ModeloPage },
-          { path: 'slide', component:SlidePage}
-          
+          { path: 'modelo', component: ModeloPage },
+          { path: 'slide', component: SlidePage },
+          { path: 'usuario', component: UsuarioPage }
       ]
   },
   {

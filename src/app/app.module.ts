@@ -16,6 +16,7 @@ import { AuthLayoutComponent } from './pages/auth/auth-layout.component';
 import { AdministrativoPage } from './pages/administrativo/administrativo';
 import { ModeloPage } from './pages/modelo/modelo';
 import { SlidePage } from './pages/slide/slide';
+import { UsuarioPage } from './pages/cadastroUsuario/usuario';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { SlidePage } from './pages/slide/slide';
     AuthLayoutComponent,
     AdministrativoPage,
     ModeloPage,
-    SlidePage
+    SlidePage,
+    UsuarioPage
   ],
   imports: [
     BrowserModule,
