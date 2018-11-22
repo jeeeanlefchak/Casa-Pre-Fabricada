@@ -52,22 +52,31 @@
        }
    }
    .tituloModelos{
-    margin: 2% 0% 0% 0%;
+        text-align: center;
+        margin: 7px 0% 7px 0%;
    }
    .modelos{
         display: flex;
         .modelo{
-            width: 200px;
             margin: 0% 2% 2% 2%;
-            mat-card{
-                height: 190px;
+            .card{
+                // display: flex;
+                // width: 100%;
+                .imagem{
+                    width: 200px;
+                    height: 190px;
+                    margin-left: 26%;
+                }
             }
         }
    }
    .visualTexto{
-     text-align: center;
-     font-family: 'Courier New', Courier, monospace;
-     font-size: 40px;
-
+        text-align: center;
+    //  font-family: 'Courier New', Courier, monospace;
+    //  font-size: 40px;
+        margin: 7px 0% 7px 0%;
+   }
+   .font{
+        font-family: Roboto,"Helvetica Neue",sans-serif;
    }
 }

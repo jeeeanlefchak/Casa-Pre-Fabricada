@@ -119,7 +119,9 @@ export class ModeloPage implements OnInit {
                 this.listaModelo.push(x);
             }
             this.buscando = false;
-            this.imagemSelecionada(this.listaModelo[0]);
+            if (this.listaModelo.length > 0) {
+                this.imagemSelecionada(this.listaModelo[0]);
+            }
         }, err => {
             this.buscando = false;
         })

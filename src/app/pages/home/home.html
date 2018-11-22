@@ -1,6 +1,6 @@
 <div id="home">
     <div>
-        <mat-card-title class="visualTexto">
+        <mat-card-title class="visualTexto font">
             <span>Casa Sustentável Pré-Fabricada</span>
         </mat-card-title>
     </div>
@@ -18,12 +18,17 @@
             </div>
         </mat-card>
     </div>
-    <div class="tituloModelos">
+    <div class="tituloModelos font">
         <mat-card-title> <span>Modelos de casas Pré-Fabricada</span></mat-card-title>
     </div>
     <div class="modelos">
         <div class="modelo" *ngFor="let modelo of listaModelo">
-            <mat-card [ngStyle]="modelo.imagem"></mat-card>
+            <mat-card class="card">
+                <mat-card class="imagem" [ngStyle]="modelo.imagem"></mat-card>
+                <div *ngIf="modelo.descricao">
+                    <span>{{modelo.descricao}}</span>
+                </div>
+            </mat-card>
         </div>
     </div>
     <!-- <mat-card-footer>teste</mat-card-footer> -->

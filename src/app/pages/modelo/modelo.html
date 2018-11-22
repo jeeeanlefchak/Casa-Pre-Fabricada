@@ -3,7 +3,7 @@
         <mat-card class="imagemPrincipal" [ngStyle]="imgSelecionada.imagem">
         </mat-card>
         <mat-form-field class="txtAreaDescricao">
-            <textarea matInput placeholder="Descrição" [(ngModel)]="imgSelecionada.descricao"> </textarea>
+            <textarea rows="20" matInput placeholder="Descrição" [(ngModel)]="imgSelecionada.descricao"> </textarea>
         </mat-form-field>
         <button class="btnDescricao" mat-button (click)="salvarDescricao(imgSelecionada)" *ngIf="!salvandoDescricao && imgSelecionada.descricao">Salvar Descrição</button>
     </div>
