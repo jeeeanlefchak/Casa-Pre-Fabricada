@@ -23,7 +23,6 @@ export class ModeloPage implements OnInit {
         this.imgSelecionada = new Modelo();
         let x = typeof modelo.imagem;
         if (x == 'string') {
-            debugger
             modelo.imagem = JSON.parse(modelo.imagem);
         }
         // modelo.imagem  = JSON.parse(JSON.stringify(modelo.imagem));

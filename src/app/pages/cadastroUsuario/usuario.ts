@@ -22,10 +22,7 @@ export class UsuarioPage implements OnInit {
       this.usuario.deletado = false;
       this.usuario.versao = 1;
         this.usuarioService.save(this.usuario).subscribe((res: Usuario) => { // esse save é um metodo abstrato todas as classes tem elez
-            this.usuario = res; // res é o retorno do servidor, o que esta voltando do servidor depois de salvo
-            if (res != null){
-
-            }
+            this.usuario = res; // res é o retorno do servidor, o que esta voltando do servidor depois de salv
         })
     }
 }

@@ -40,7 +40,7 @@ export const baseRoutes: Routes = [
 export class BaseRoute {
   constructor(router: Router) {
       router.events.subscribe((event) => {
-        router.navigate(['/home']);
+        router.navigate(['']);
         //   if (event instanceof NavigationStart) {
         //       const token = sessionStorage.getItem('idEmpresa');
         //       if (token == null && event.url !== '/login') {

@@ -23,8 +23,9 @@ export class UsuarioService extends AbstractService<Usuario> {
         })
     }
 
-    public getUser(): Observable<Usuario>{
-        return this.http.get(this.urlWebBase + '/getUser').map(res=>{
+    public getUser(user): Observable<Usuario>{
+      // pra enviar do tipo get é pela url e
+        return this.http.post(this.urlWebBase + '/getUser', user).map(res=>{
             return res.json();
         })
     }

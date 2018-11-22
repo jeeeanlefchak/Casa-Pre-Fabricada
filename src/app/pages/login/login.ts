@@ -1,18 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Usuario } from '../../models/usuario';
+import { UsuarioService } from '../../service/usuario-service';
 
 @Component({
   selector: 'login',
   templateUrl: './login.html',
   styleUrls: ['login.scss'],
-  providers: []
+  providers: [ UsuarioService ]
 })
 
 export class LoginPage implements OnInit {
-  // public empresa: Empresa = new Empresa();
+  public user: Usuario = new Usuario();
   public loginSenhaErrado: string = null;
   public logado: boolean = false;
-  constructor(public router: Router) {
+  public manterLogado: boolean = false;
+  constructor(public router: Router, public userService: UsuarioService) {
+    /*if (sessionStorage.getItem('idUsuario').length > 0){
+      router.navigate(['/home']);
+    }*/
   }
 
   ngOnInit() {
@@ -20,6 +26,14 @@ export class LoginPage implements OnInit {
 
   public logar() {
     this.loginSenhaErrado = null;
+    this.userService.getUser(this.user).subscribe((resp: Usuario) => {
+      if (resp != null){
+        if (this.manterLogado){
+          sessionStorage.setItem('idUsuario', resp.id.toString());
+        }
+        this.router.navigate(['/home']);
+      }
+    })
     // this.empresaService.logar(this.empresa).subscribe((dado: Empresa) => {
     //   if (dado.id) {
     //     sessionStorage.setItem('idEmpresa', dado.id.toString());

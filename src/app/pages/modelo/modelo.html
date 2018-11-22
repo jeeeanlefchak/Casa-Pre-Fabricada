@@ -1,16 +1,15 @@
 <div id="modelo">
-
-    <div>
+    <div class="imgSelected">
         <mat-card class="imagemPrincipal" [ngStyle]="imgSelecionada.imagem">
-            <!-- <label for="imagem" class="labelImagem">
-                <mat-icon aria-hidden="true" class="icon-imagem"></mat-icon>
-            </label> -->
         </mat-card>
+        <mat-form-field class="txtAreaDescricao">
+            <textarea matInput placeholder="Descrição" [(ngModel)]="imgSelecionada.descricao"> </textarea>
+        </mat-form-field>
     </div>
     <div class="imagem">
-            <mat-card *ngFor="let modelo of listaModelo" class="card-imagem" [ngStyle]="modelo.imagem" [ngClass]="{'active': imgSelecionada.imagem == modelo.imagem, 'naoActive' : imgSelecionada.imagem != modelo.imagem  }"
-                (click)="imagemSelecionada(modelo)">
-            </mat-card>
+        <mat-card *ngFor="let modelo of listaModelo" class="card-imagem" [ngStyle]="modelo.imagem" [ngClass]="{'active': imgSelecionada.imagem == modelo.imagem, 'naoActive' : imgSelecionada.imagem != modelo.imagem  }"
+            (click)="imagemSelecionada(modelo)">
+        </mat-card>
     </div>
     <div class="btns" *ngIf="!buscando">
         <button mat-icon-button *ngIf="imgSelecionada.imagem">

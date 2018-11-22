@@ -7,10 +7,14 @@
                 </div>
                 <form id="Login">
                     <div class="form-group">
-                        <input type="email"  [(ngModel)]="empresa.login" [ngModelOptions]="{standalone: true}" class="form-control" id="inputEmail" placeholder="NOME DE USUARIO OU E-MAIL">
+                        <input type="email"  [(ngModel)]="user.nome" [ngModelOptions]="{standalone: true}" class="form-control" id="inputEmail" placeholder="NOME DE USUARIO OU E-MAIL">
                     </div>
                     <div class="form-group">
-                        <input type="password"  [(ngModel)]="empresa.senha" [ngModelOptions]="{standalone: true}" class="form-control" id="inputPassword" placeholder="SENHA" (keyup.enter)="logar()">
+                        <input type="password"  [(ngModel)]="user.senha" [ngModelOptions]="{standalone: true}" class="form-control" id="inputPassword" placeholder="SENHA">
+                    </div>
+                    <div class="form-group">
+                      <input type="checkbox" [(ngModel)]="manterLogado" [ngModelOptions]="{standalone: true}" id="checkLogado">
+                      <span> Mantenha-me Logado !</span>
                     </div>
                     <span class="loginSenhaErrado">{{loginSenhaErrado}}</span>
                     <button type="submit" class="btn btn-primary" (click)="logar()">Entrar</button>
